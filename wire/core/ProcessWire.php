@@ -846,6 +846,7 @@ class ProcessWire extends Wire {
 		$cfg['urls']->data(array(
 			'wire' => "$wireDir/",
 			'site' => "$siteDir/",
+			'vendor' => "vendor/",
 			'modules' => "$wireDir/modules/",
 			'siteModules' => "$siteDir/modules/",
 			'core' => "$coreDir/",
@@ -855,6 +856,7 @@ class ProcessWire extends Wire {
 			'files' => "$assetsDir/files/",
 			'tmp' => "$assetsDir/tmp/",
 			'templates' => "$siteDir/templates/",
+			'content' => "$siteDir/templates/content/",
 			'fieldTemplates' => "$siteDir/templates/fields/",
 			'adminTemplates' => "$wireDir/$adminTplDir/",
 		), true);

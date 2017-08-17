@@ -15,7 +15,9 @@
   ],
   "require": {
     "php": ">=5.3.8",
-    "ext-gd": "*"
+    "ext-gd": "*",
+    "jwage/purl": "^0.0.7",
+    "atk4/dsql": "^1.1"
   },
   "autoload": {
     "files": [ "wire/core/ProcessWire.php" ]
