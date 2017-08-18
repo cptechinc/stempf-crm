@@ -285,9 +285,8 @@
 			$switching = array(':loginid' => $loginid, ':shared' => $SHARED_ACCOUNTS, ':loginid' => $loginid, ':loginid' => $loginid);
 			$withquotes = array(true, true, true, true);
 		} else {
-			$sql = wire('database')->prepare("SELECT COUNT(*) FROM custindex WHERE shiptoid = ''" . $limiting);
-			$switching = array();
-			$withquotes = array();
+			$sql = wire('database')->prepare("SELECT COUNT(*) FROM custindex WHERE shiptoid = ''");
+			$switching = array(); $withquotes = array();
 		}
 
 		if ($debug) {
@@ -309,8 +308,7 @@
 			$withquotes = array(true, true, true, true);
 		} else {
 			$sql = wire('database')->prepare("SELECT * FROM custindex WHERE UCASE(CONCAT(custid, ' ', name, ' ', shiptoid, ' ', addr1, ' ', ccity, ' ', cst, ' ', czip, ' ', cphone, ' ', contact, ' ', source, ' ', cphext)) LIKE UCASE(:search) " . $limiting);
-			$switching = array();
-			$withquotes = array();
+			$switching = array(':search' => $search); $withquotes = array(true);
 		}
 
 		if ($debug) {
@@ -333,8 +331,7 @@
 			$withquotes = array(true, true, true, true);
 		} else {
 			$sql = wire('database')->prepare("SELECT * FROM custindex WHERE UCASE(CONCAT(custid, ' ', name, ' ', shiptoid, ' ', addr1, ' ', ccity, ' ', cst, ' ', czip, ' ', cphone, ' ', contact, ' ', source, ' ', cphext)) LIKE UCASE(:search) " . $limiting);
-			$switching = array();
-			$withquotes = array();
+			$switching = array(':search' => $search); $withquotes = array(true);
 		}
 
 		if ($debug) {
@@ -356,8 +353,8 @@
 			$withquotes = array(true, true, true, true);
 		} else {
 			$sql = wire('database')->prepare("SELECT COUNT(*) FROM custindex WHERE UCASE(CONCAT(custid, ' ', name, ' ', shiptoid, ' ', addr1, ' ', ccity, ' ', cst, ' ', czip, ' ', cphone, ' ', contact, ' ', source, ' ', cphext)) LIKE UCASE(:search)");
-			$switching = array();
-			$withquotes = array();
+			$switching = array(':search' => $search); $withquotes = array(true);
+			$withquotes = array(true);
 		}
 
 		if ($debug) {
