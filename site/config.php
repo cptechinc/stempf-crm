@@ -37,7 +37,7 @@ if(!defined("PROCESSWIRE")) die();
 	$config->prependTemplateFile = '_init.php';
 	$config->maxUrlSegments = 7;
 	$config->cgi = "DPLUSO";
-	$config->COMPANY = '3';
+	$config->COMPANY = '2';
 	$config->companyfiles = "/var/www/html/data".$config->COMPANY."/";
 	$config->documentstorage = "/orderfiles/";
 	$config->documentstoragedirectory = "/var/www/html/orderfiles/";
