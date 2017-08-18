@@ -1,5 +1,5 @@
 <?php
-	include $config->paths->assets."classes/Table.php"; 
+	 
     $standfile = $config->jsonfilepath.session_id()."-cistandordr.json";
     //$standfile = $config->jsonfilepath."cistand-cistandordr.json";
  ?>

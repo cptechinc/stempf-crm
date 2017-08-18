@@ -1,5 +1,4 @@
 <?php
-	include $config->paths->assets."classes/Table.php";
     $creditfile = $config->jsonfilepath.session_id()."-cicredit.json";
     //$creditfile = $config->jsonfilepath."cicred-credit.json";
 

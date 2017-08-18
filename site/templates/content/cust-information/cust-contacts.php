@@ -1,5 +1,4 @@
 <?php
-	include $config->paths->assets."classes/Table.php";
     $contactfile = $config->jsonfilepath.session_id()."-cicontact.json";
     //$contactfile = $config->jsonfilepath."cicont-cicontact.json";
 

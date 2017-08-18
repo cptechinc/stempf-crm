@@ -3,4 +3,9 @@
 <file name="ci-open-invoices.json" server="192.168.1.2//var/www/html/dpluso/" local="131364103750542020" remote="131364283200000000" Dst="2" />
 <file name="ci-payment-history.json" server="192.168.1.2//var/www/html/dpluso/" local="131364847332029913" remote="131365027200000000" Dst="2" />
 <file name="ci-quote.json" server="192.168.1.2//var/www/html/dpluso/" local="131365764240804329" remote="131365944000000000" Dst="2" />
+<file name="ci-open-invoices.json" server="216.17.51.112//var/www/html/dpluso/" local="131473876048268792" remote="131475620730000000" Dst="2" />
+<file name="ci-payment-history.json" server="216.17.51.112//var/www/html/dpluso/" local="131473876053008053" remote="131475620730000000" Dst="2" />
+<file name="ci-quote.json" server="216.17.51.112//var/www/html/dpluso/" local="131473876051233918" remote="131475620730000000" Dst="2" />
+<file name="ci-sales-history.json" server="216.17.51.112//var/www/html/dpluso/" local="131473876054226158" remote="131475620730000000" Dst="2" />
+<file name="ci-sales-orders.json" server="216.17.51.112//var/www/html/dpluso/" local="131473876050046718" remote="131475620730000000" Dst="2" />
 </dwsync>
