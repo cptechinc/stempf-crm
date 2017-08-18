@@ -477,6 +477,10 @@ $(document).ready(function() {
 				});
 			//}
 		});
+	
+		$("body").on("submit", "#cust-index-search-form", function(e) {
+			e.preventDefault();
+		});
 
 		$("body").on("keyup", ".cust-index-search", function() {
 			//if ($(this).val().length > 3) {
