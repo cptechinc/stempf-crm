@@ -176,7 +176,7 @@ $(document).ready(function() {
 			$(this).closest('.modal').modal('hide');
 			ajaxloader.url = URI(ajaxloader.url).addQuery('modal', 'modal').normalizeQuery().toString();
 			$(ajaxloader.loadinto).loadin(ajaxloader.url, function() {
-				$(ajaxloader.modal).modal();
+				$(ajaxloader.modal).resizemodal(ajaxloader.modalsize).modal();
 			});
 		});
 
