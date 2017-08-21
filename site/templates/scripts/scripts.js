@@ -330,13 +330,12 @@ $(document).ready(function() {
 			var loadinto = config.modals.ajax+" .modal-content";
 			var parentmodal = $(this).closest('.modal').modal('hide');
 			var editurl = '';
-			var jsonurl = jsonurl = form.find('input[name="jsondetailspage"]').val();
+			var jsonurl = form.find('input[name="jsondetailspage"]').val();
 			var pageurl = new URI().addQuery('show', 'details').hash('#edit-page').toString();
 			showajaxloading();
 
 			$('#'+form.attr('id')).postform({formdata: false, jsoncallback: false}, function() { //{formdata: data/false, jsoncallback: true/false}
 				wait(500, function() {
-
 					$.getJSON(jsonurl, function(json) {
 						console.log(jsonurl);
 						if (addto === 'order') {
@@ -355,7 +354,6 @@ $(document).ready(function() {
 								});
 							});
 						});
-
 					});
 				});
 			});
@@ -413,10 +411,11 @@ $(document).ready(function() {
 			var resultsurl = $(formid+ " .resultsurl").val();
 			var addonurl = $(formid+ " .addonurl").val();
 			var loadinto = '#' + $(this).closest('.modal').attr('id') + ' .results';
+			showajaxloading();
 			$(formid).postform({formdata: false, jsoncallback: false}, function() { //{formdata: data/false, jsoncallback: true/false}
 				wait(500, function() {
 					$(loadinto).loadin(resultsurl, function() {
-
+						hideajaxloading();
 					});
 				});
 			});
