@@ -3,12 +3,9 @@
 	*  QUOTE REDIRECT
 	* @param string $action
 	*/
-
-
 	if ($input->post->action) { $action = $input->post->text('action'); } else { $action = $input->get->text('action'); }
 	if ($input->get->page) { $pagenumber = $input->get->int('page'); } else { $pagenumber = 1; }
 	if ($input->get->orderby) { $sortaddon = '&orderby=' . $input->get->text('orderby'); } else { $sortaddon = ''; }
-
 	$linkaddon = $sortaddon;
 	$session->{'from-redirect'} = $page->url;
 	$session->remove('quote-search');
@@ -85,9 +82,6 @@
 	* }
 	*
 	**/
-
-
-
 	switch ($action) {
 		case 'load-cust-quotes':
 			$custID = $input->get->text('custID');
@@ -141,7 +135,6 @@
 			$quote['ststate'] = $input->post->text('shipto-state');
 			$quote['stzip'] = $input->post->text('shipto-zip');
 			$quote['contact'] = $input->post->text('contact');
-
 			$quote['emailadr'] = $input->post->text('contact-email');
 			$quote['careof'] = $input->post->text('careof');
 			$quote['revdate'] = $input->post->text('reviewdate');
@@ -150,11 +143,9 @@
 			$quote['deliverydesc'] = $input->post->text('delivery');
 			$quote['custpo'] = $input->post->text('custpo');
 			$quote['custref'] = $input->post->text('reference');
-
 			$quote['telenbr'] = $input->post->text('contact-phone');
 			//$extension = $_POST["contact-extension"];
 			$quote['faxnbr'] = $input->post->text('contact-fax');
-
 			$session->sql = edit_quotehead(session_id(), $qnbr, $quote, false);
 			$data = array('DBNAME' => $config->dbName, 'UPDATEQUOTEHEAD' => false, 'QUOTENO' => $qnbr);
 			$session->loc = $config->pages->edit."quote/?qnbr=".$qnbr.$linkaddon;
@@ -174,7 +165,6 @@
 				$qnbr = $input->get->text('qnbr');
 				$linenbr = $input->get->text('linenbr');
 			}
-
 			$quotedetail = getquotelinedetail(session_id(), $qnbr, $linenbr, false);
 			$quotedetail['quotprice'] = $input->post->text('price');
 			$quotedetail['discpct'] =  $input->post->text('discount');
@@ -182,16 +172,15 @@
 			$quotedetail['ordrqty'] = $input->post->text('qty');
 			$quotedetail['rshipdate'] = $input->post->text('rqstdate');
 			$quotedetail['whse'] = $input->post->text('whse');
-			$quotedetail['spcord'] = $input->post->text('specialorder');
 			$quotedetail['linenbr'] = $input->post->text('linenbr');
-
+			$quotedetail['spcord'] = $input->post->text('specialorder');
 			$quotedetail['vendorid'] = $input->post->text('vendorID');
-			// $quotedetail['shipfromid'] = $input->post->text('shipfromid');
+			$quotedetail['shipfromid'] = $input->post->text('shipfromid');
 			$quotedetail['vendoritemid'] = $input->post->text('itemID');
-			// $quotedetail['nsitemgroup'] = $input->post->text('group');
-			// $quotedetail['ponbr'] = $input->post->text('ponbr');
-			// $quotedetail['poref'] = $input->post->text('poref');
-
+			$quotedetail['nsitemgroup'] = $input->post->text('group');
+			$quotedetail['ponbr'] = $input->post->text('ponbr');
+			$quotedetail['poref'] = $input->post->text('poref');
+			$quotedetail['uom'] = $input->post->text('uofm');
 			$session->sql = edit_quoteline(session_id(), $qnbr, $quotedetail, false);
 			$session->detail = $quotedetail;
 			$data = array('DBNAME' => $config->dbName, 'UPDATEQUOTEDETAIL' => false, 'QUOTENO' => $qnbr, 'LINENO' => $linenbr);
@@ -237,16 +226,13 @@
 				} else {
 					$quotedetail['ordrqty'] = '0';
 				}
-
 				$session->sql = edit_quoteline(session_id(), $qnbr, $quotedetail, false);
 			}
-
 			$session->custID = $custID = getquotecustomer(session_id(), $qnbr, false);
 			$data = array('DBNAME' => $config->dbName, 'QUOTETOORDER' => false, 'QUOTENO' => $qnbr, 'LINENO' => 'ALL');
 			$session->loc = $config->pages->orders."redir/?action=edit-new-order";
 			break;
 	}
-
 	writedplusfile($data, $filename);
 	header("location: /cgi-bin/" . $config->cgi . "?fname=" . $filename);
  	exit;
