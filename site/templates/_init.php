@@ -22,7 +22,7 @@
 	include $config->paths->vendor."cptech/src/Table.php";
 	include $config->paths->vendor."cptech/src/utfport.php";
 
-	$config->sessionName = session_name();
+	$session->sessionName = session_name();
 	$page->fullURL = new \Purl\Url($page->httpUrl);
 
 	if (!empty($config->filename) && $config->filename != '/') {
