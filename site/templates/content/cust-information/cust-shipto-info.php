@@ -9,7 +9,6 @@
     <?php if ($shiptojson['error']) : ?>
         <div class="alert alert-warning" role="alert"><?php echo $shiptojson['errormsg']; ?></div>
     <?php else : ?>
-		
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="row">
@@ -112,7 +111,6 @@
 				</div>
 			</div>
 		</div>
-		
     <?php endif; ?>
 <?php else : ?>
     <div class="alert alert-warning" role="alert">Information Not Available</div>

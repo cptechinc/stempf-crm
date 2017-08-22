@@ -1,11 +1,7 @@
 <?php
-
-	
 	include $config->paths->content."item-information/functions/ii-functions.php";
 	$quotesfile = $config->jsonfilepath.session_id()."-ciquote.json";
 	//$quotesfile = $config->jsonfilepath."ciqt-ciquote.json";
-
-
 
 	if (checkformatterifexists($user->loginid, 'ci-quote', false)) {
 		$defaultjson = json_decode(getformatter($user->loginid, 'ci-quote', false), true);
@@ -47,7 +43,6 @@
 	if ($config->ajax) {
 		echo '<p>' . makeprintlink($config->filename, 'View Printable Version') . '</p>';
 	}
-
 ?>
 <?php if (file_exists($quotesfile)) : ?>
     <?php $quotejson = json_decode(file_get_contents($quotesfile), true);  ?>
@@ -62,9 +57,7 @@
       			<?php include $config->paths->content."/cust-information/tables/quote-formatted.php"; ?>
       		</div>
       	<?php endforeach; ?>
-
     <?php endif; ?>
-
 <?php else : ?>
     <div class="alert alert-warning" role="alert">Information Not Available</div>
 <?php endif; ?>

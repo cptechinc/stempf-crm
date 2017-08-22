@@ -1,11 +1,7 @@
 <?php
-
-	
 	include $config->paths->content."item-information/functions/ii-functions.php";
 	$invoicefile = $config->jsonfilepath.session_id()."-ciopeninv.json";
 	//$invoicefile = $config->jsonfilepath."cioi-ciopeninv.json";
-
-
 
 	if (checkformatterifexists($user->loginid, 'ci-open-invoice', false)) {
 		$defaultjson = json_decode(getformatter($user->loginid, 'ci-open-invoice', false), true);
@@ -47,7 +43,6 @@
 			})
 		</script>
     <?php endif; ?>
-
 <?php else : ?>
     <div class="alert alert-warning" role="alert">Information Not Available</div>
 <?php endif; ?>

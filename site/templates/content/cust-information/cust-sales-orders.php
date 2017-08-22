@@ -1,11 +1,7 @@
 <?php
-
-	include_once $config->paths->assets."classes/Table.php";
 	include_once $config->paths->content."item-information/functions/ii-functions.php";
 	$salesfile = $config->jsonfilepath.session_id()."-cisalesordr.json";
 	//$salesfile = $config->jsonfilepath."ciso-cisalesordr.json";
-
-
 
 	if (checkformatterifexists($user->loginid, 'ci-sales-order', false)) {
 		$defaultjson = json_decode(getformatter($user->loginid, 'ci-sales-order', false), true);
