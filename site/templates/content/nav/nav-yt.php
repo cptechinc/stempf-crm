@@ -15,7 +15,7 @@
 <nav class="navbar <?php echo $navbar; ?> navbar-fixed-top" id="nav-yt">
 	<div class="container">
 		<div class="navbar-header">
-			<a href="#" class=" navbar-brand yt-menu-open" data-function="show">
+			<a href="#" class=" navbar-brand yt-menu-open">
             	<i class="material-icons">&#xE5D2;</i>
             </a>
 			<?php if (!$config->debug) : ?>
@@ -25,7 +25,6 @@
             <?php endif; ?>
             <a href="#" class="navbar-brand open-site-search hidden-sm hidden-md hidden-lg pull-right"><i class="material-icons">&#xE8B6;</i></a>
 		</div>
-
 
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
