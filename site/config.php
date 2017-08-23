@@ -136,6 +136,7 @@ $config->chmodFile = '0644'; // permission for files created by ProcessWire
  * 
  */
 $config->timezone = 'America/Chicago';
+setlocale(LC_ALL,'en_US.UTF-8');
 
 /**
  * Installer: Unix timestamp of date/time installed
@@ -151,5 +152,5 @@ $config->installed = 1502913939;
  * Installer: HTTP Hosts Whitelist
  * 
  */
-$config->httpHosts = array('216.17.51.112');
+$config->httpHosts = array('216.17.51.112', 'salesportal.stempf.com');
 
