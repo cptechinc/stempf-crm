@@ -353,8 +353,7 @@
 			$withquotes = array(true, true, true, true);
 		} else {
 			$sql = wire('database')->prepare("SELECT COUNT(*) FROM custindex WHERE UCASE(CONCAT(custid, ' ', name, ' ', shiptoid, ' ', addr1, ' ', ccity, ' ', cst, ' ', czip, ' ', cphone, ' ', contact, ' ', source, ' ', cphext)) LIKE UCASE(:search)");
-			$switching = array(':search' => $search); $withquotes = array(true);
-			$withquotes = array(true);
+			$switching = array(':search' => $search); $withquotes = array(true); $withquotes = array(true);
 		}
 
 		if ($debug) {
@@ -1074,6 +1073,17 @@
 			return returnsqlquery($sql->queryString, $switching, $withquotes);
 		} else {
 			return $sql->fetch(PDO::FETCH_ASSOC);
+		}
+	}
+	
+	function insertcartline($sessionid, $linenbr, $debug) {
+		$sql = wire('database')->prepare("INSERT INTO cartdet (sessionid, linenbr) VALUES (:sessionid, :linenbr)");
+		$switching = array(':sessionid' => $sessionid, ':linenbr' => $linenbr); $withquotes = array(true, true);
+		if ($debug) {
+			return returnsqlquery($sql->queryString, $switching, $withquotes);
+		} else {
+			$sql->execute($switching);
+			return array('sql' => returnsqlquery($sql->queryString, $switching, $withquotes), 'insertedid' => wire('database')->lastInsertId());
 		}
 	}
 
