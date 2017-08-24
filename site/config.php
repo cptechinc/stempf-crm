@@ -85,6 +85,12 @@ if(!defined("PROCESSWIRE")) die();
 	$config->pages->quotes = $config->urls->root . 'user/quotes/';
 	$config->pages->actions = $config->urls->root . 'activity/';
 	$config->pages->documentation = $config->urls->root . "documentation/";
+<<<<<<< HEAD
+=======
+	$config->pages->documentstorage = $config->documentstorage;
+
+
+>>>>>>> ce84d29... Added urls to document storage
 	$config->dplusnotes = array (
 		'order' => array(
 			'width' => '35', 'type' => 'SORD', 'forms' => 4, 'form1' => 'Pick Ticket', 'form2' => 'Pack Ticket', 'form3' => 'Invoice', 'form4' => 'Acknowledgement'
