@@ -139,6 +139,9 @@
                 case 'quote':
                     $link = wire('config')->pages->actions.$this->actiontype."/add/new/?qnbr=".$this->qnbr;
                     break;
+                case 'order':
+                    $link = wire('config')->pages->actions.$this->actiontype."/add/new/?ordn=".$this->ordn;
+                    break;
 			}
 			return $link;
 		}
