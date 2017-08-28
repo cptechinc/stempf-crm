@@ -131,6 +131,14 @@
 						<td><input type="text" name="desc2" class="form-control input-sm" value="<?= $linedetail['desc2']; ?>"></td>
 					</tr>
 					<tr>
+						<td>Desc 1</td>
+						<td><input type="text" name="desc1" class="form-control input-sm" value="<?= $linedetail['desc1']; ?>"></td>
+					</tr>
+					<tr>
+						<td>Desc 2</td>
+						<td><input type="text" name="desc2" class="form-control input-sm" value="<?= $linedetail['desc2']; ?>"></td>
+					</tr>
+					<tr>
 						<td>Group</td>
 						<td>
 							<?php $groups = getitemgroups(false); ?>
