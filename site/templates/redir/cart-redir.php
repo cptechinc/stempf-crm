@@ -29,7 +29,7 @@
 	*		SHIPTOID=$shipID
 	*		WHSE=$whse  **OPTIONAL
 	*		break;
-	*	case 'add-non-stock-to-cart':
+	*	case 'add-nonstock-item:
 	*		DBNAME=$config->DBNAME
 	*		CARTDET
 	*		ITEMID=N

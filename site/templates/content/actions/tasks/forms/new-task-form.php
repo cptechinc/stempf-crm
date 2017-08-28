@@ -62,7 +62,7 @@
 					<tr>
 						<td colspan="2" class="control-label">
 							<label for="" class="control-label">Notes</label>
-							<textarea name="textbody" id="" cols="30" rows="10" class="form-control note required"> </textarea> <br>
+							<textarea name="textbody" cols="30" rows="10" class="form-control note required"> </textarea> <br>
 							<button type="submit" class="btn btn-success">Create Task</button>
 						</td>
 					</tr>

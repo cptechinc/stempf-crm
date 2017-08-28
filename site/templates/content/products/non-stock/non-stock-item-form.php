@@ -30,7 +30,7 @@
         <div class="col-sm-10">
             <form action="<?= $formaction; ?>">
                 <input type="hidden" name="action" value="add-nonstock">
-                <input type="hidden" name="custID" value="custID">
+                <input type="hidden" name="custID" value="<?= $input->get->text('custID'); ?>">
                 <?php if ($addtype == 'order') : ?>
                     <input type="hidden" name="ordn" value="<?= $ordn; ?>">
                 <?php elseif ($addtype == 'quote') : ?>
