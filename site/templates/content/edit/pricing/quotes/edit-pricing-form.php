@@ -71,20 +71,16 @@
 				</tr>
 				<?php if (1 == 100) : ?>
 					<tr>
-						<td>
-							On Order
-						</td>
+						<td>On Order</td>
 						<td>
 							<input type="checkbox" name="form1" id="so-form1" class="check-toggle" data-size="small" data-width="73px" value="Y">
 						</td>
 					</tr>
 				<?php endif; ?>
 				<tr>
+					<td>Special Order</td>
 					<td>
-						Special Order
-					</td>
-					<td>
-						<select name="specialorder" class="form-control input-sm">
+						<select name="specialorder" class="form-control input-sm special-order-select">
 							<?php foreach ($config->specialordertypes as $spectype => $specdesc) : ?>
 								<?php if ($linedetail['spcord'] == $spectype) : ?>
 									<option value="<?= $spectype; ?>" selected><?= $specdesc; ?></option>
@@ -96,7 +92,7 @@
 					</td>
 				</tr>
 			</table>
-			<div class="<?php if (!in_array($linedetail['spcord'], $soconfig['config']['special_orders'])) {echo 'hidden';} ?>">
+			<div class="special-order-details <?php if (!in_array($linedetail['spcord'], $soconfig['config']['special_orders'])) {echo 'hidden';} ?>">
 				<h4>Special Order Details</h4>
 				<table class="table table-bordered table-striped table-condensed">
 					<tr>
@@ -124,6 +120,33 @@
 						<td>Vendor ItemID</td>
 						<td><input type="text" name="itemID" class="form-control input-sm" value="<?= $linedetail['vendoritemid']; ?>"></td>
 					</tr>
+<<<<<<< HEAD
+=======
+					<tr>
+						<td>Desc 1</td>
+						<td><input type="text" name="desc1" class="form-control input-sm" value="<?= $linedetail['desc1']; ?>"></td>
+					</tr>
+					<tr>
+						<td>Desc 2</td>
+						<td><input type="text" name="desc2" class="form-control input-sm" value="<?= $linedetail['desc2']; ?>"></td>
+					</tr>
+					<tr>
+						<td>Group</td>
+						<td>
+							<?php $groups = getitemgroups(false); ?>
+                            <select name="group" class="form-control input-sm">
+                                <option value="">None</option>
+                                <?php foreach ($groups as $group) : ?>
+									<?php if ($group['code'] == $linedetail['nsitemgroup']) : ?>
+										<option value="<?= $group['code']; ?>" selected><?= $group['desc']; ?></option>
+									<?php else: ?>
+										<option value="<?= $group['code']; ?>"><?= $group['desc']; ?></option>
+									<?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+						</td>
+					</tr>
+>>>>>>> 0c80bf2... Update for nonstock items
 				</table>
 			</div>
 
