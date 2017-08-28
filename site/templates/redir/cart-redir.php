@@ -9,11 +9,16 @@
 		$itemID = $input->get->text('itemID');
 		$qty = $input->get->text('qty');
 	}
+
 	if ($qty == '' || $qty == false) {$qty = "1"; }
+
 	if ($input->post->custID) { $custID = $input->post->custID; } elseif($input->get->custID) {$custID = $input->get->text('custID');} else {$custID = $session->custID;}
 	if ($input->post->shipID) { $shipID = $input->post->shipID; } elseif($input->get->shipID) { $shipID = $input->get->text('shipID'); } else {$shipID = $session->shipID;}
+
 	if ($custID != '') {$session->custID = $custID;} if ($shipID != '') {$session->shipID = $shipID;}
+
 	$filename = session_id();
+
 	/**
 	* CART REDIRECT
 	* @param string $action
@@ -29,7 +34,7 @@
 	*		SHIPTOID=$shipID
 	*		WHSE=$whse  **OPTIONAL
 	*		break;
-	*	case 'add-nonstock-item:
+	*	case 'add-non-stock-to-cart':
 	*		DBNAME=$config->DBNAME
 	*		CARTDET
 	*		ITEMID=N
@@ -69,6 +74,7 @@
 	* }
 	*
 	**/
+
     switch ($action) {
         case 'add-to-cart':
 			$data = array('DBNAME' => $config->dbName, 'CARTDET' => false, 'ITEMID' => $itemID, 'QTY' => $qty);
@@ -99,14 +105,6 @@
 			$data = array('DBNAME' => $config->dbName, 'CARTDET' => false, 'LINENO' => '0', 'ITEMID' => 'N', 'QTY' => $qty, 'CUSTID' => $custID);
 			$session->loc = $config->pages->cart;
 			break;
-		case 'add-multiple-items':
-			$itemids = $input->post->itemID;
-			$qtys = $input->post->qty;
-			$data = array("DBNAME=$config->dbName", 'CARTADDMULTIPLE', "CUSTID=$custID");
-			$data = writedataformultitems($data, $itemids, $qtys);
-            $session->addtocart = sizeof($itemIDs);
-            $session->loc = $config->pages->cart;
-			break;
 		case 'update-line':
 			$linenbr = $input->post->text('linenbr');
 			$cartdetail = getcartline(session_id(), $linenbr, false);
@@ -117,6 +115,7 @@
 			$cartdetail['whse'] = $input->post->text('whse');
 			$cartdetail['spcord'] = $input->post->text('specialorder');
 			$cartdetail['linenbr'] = $input->post->text('linenbr');
+
 			$cartdetail['spcord'] = $input->post->text('specialorder');
 			$cartdetail['vendorid'] = $input->post->text('vendorID');
 			$cartdetail['shipfromid'] = $input->post->text('shipfromid');
@@ -125,9 +124,11 @@
 			$cartdetail['ponbr'] = $input->post->text('ponbr');
 			$cartdetail['poref'] = $input->post->text('poref');
 			$cartdetail['uom'] = $input->post->text('uofm');
+
 			$session->sql = edit_cartline(session_id(), $cartdetail, false);
 			$session->loc = $input->post->text('page');
 			$data = array('DBNAME' => $config->dbName, 'CARTDET' => false, 'LINENO' => $input->post->linenbr);
+
 			if ($custID == '') {$custID = $config->defaultweb;}
 			$data['CUSTID'] = $custID; if ($shipID != '') {$data['SHIPTOID'] = $shipID; }
 			$session->loc = $config->pages->cart;
@@ -147,6 +148,7 @@
 			$session->sql = edit_cartline(session_id(), $cartdetail, false);
 			$session->loc = $config->pages->cart;
 			$data = array('DBNAME' => $config->dbName, 'CARTDET' => false, 'LINENO' => $input->post->linenbr);
+
 			if ($custID == '') {$custID = $config->defaultweb;}
 			$data['CUSTID'] = $custID; if ($shipID != '') {$data['SHIPTOID'] = $shipID; }
 			break;
@@ -159,6 +161,8 @@
            	$session->loc = $config->pages->quotes . "redir/?action=edit-new-quote";
             break;
 	}
+
 	writedplusfile($data, $filename);
 	header("location: /cgi-bin/" . $config->cgi . "?fname=" . $filename);
+
  	exit;

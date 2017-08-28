@@ -2,10 +2,13 @@
 	if ($input->post->action) { $action = $input->post->text('action'); } else { $action = $input->get->text('action'); }
 	if ($input->get->page) { $pagenumber = $input->get->int('page'); } else { $pagenumber = 1; }
 	if ($input->get->orderby) { $sortaddon = '&orderby=' . $input->get->text('orderby'); } else { $sortaddon = ''; }
+
 	$link_addon = $sortaddon;
 	$session->{'from-redirect'} = $page->url;
 	$session->remove('order-search');
+
 	$filename = session_id();
+
 	/**
 	* ORDERS REDIRECT
 	* @param string $action
@@ -91,6 +94,7 @@
 	* }
 	*
 	**/
+
 	switch ($action) {
 		case 'load-cust-orders':
 			$session->remove('ordersearch');
@@ -139,6 +143,7 @@
 		case 'get-order-documents':
 			$ordn = $input->get->text('ordn');
 			$custID = get_custid_from_order(session_id(), $ordn);
+
 			if ($input->get->itemdoc) {
 				if ($input->get->custID) {
 					$session->loc = paginate($config->pages->ajax."load/orders/cust/".urlencode($custID)."/?ordn=".$ordn.$link_addon."&show=documents&itemdoc=".$input->get->text('itemdoc'), $pagenumber, $custID, '');
@@ -156,6 +161,7 @@
 				} else {
 					$session->loc = paginate($config->pages->ajax."load/orders/salesrep/?ordn=".$ordn."&show=documents".$link_addon, $pagenumber, "salesrep", '');
 				}
+
 			}
 			$data = array('DBNAME' => $config->dbName, 'ORDDOCS' => $ordn, 'CUSTID' => $custID);
 			break;
@@ -166,8 +172,10 @@
 			$searchterm = $input->post->q;
 			$custID = $input->post->text('custID');
 			$shipID = $input->post->text('shipID');
+
 			//searchtype is the code the COBOL program looks for when scanning the file made. The code is based on SearchType
 			//so if we are searching order# then the searchType will be ORDERNBR and the cobol program will know to fill our mysql based on ordernbr
+
 			$data = array('DBNAME' => $config->dbName, 'ORDRHED' => false, 'CUSTID' => $custID, $searchtype => $searchterm);
 			switch ($orderstatus) {
 				case 'O':
@@ -192,11 +200,13 @@
 					$session->{'ordertype'} = '';
 			}
 			$data['TYPE'] = $orderstatus;
+
 			if ($searchterm == '' ) {
 				$session->ordersearch = 'STUFF';
 			} else {
 				$session->ordersearch = "'" . $searchterm . "' in " . $os;
 			}
+
 			if (($input->post->text('date-from')) != "") {
 				$datefrom = $input->post->text('date-from');
 				$datethru = "";
@@ -214,7 +224,9 @@
 					$data['DATETHRU'] = $datethru;
 					$session->ordersearch =  $searchvalu . ' in '.$os;
 				}
+
 			}
+
 			$session->loc = $config->pages->ajax."load/orders/cust/".urlencode($custID)."/";
 			if ($shipID != '') {$session->loc .= "shipto-".urlencode($shipID)."/";}
 			$session->loc .= "?ordn=".$link_addon;
@@ -232,6 +244,7 @@
 			$order = get_orderhead(session_id(), $ordn, false);
 			$intl = $input->post->text("intl");
 			$paytype = addslashes($input->post->text("paytype"));
+
 			$order['shiptoid'] = $input->post->text('shiptoid');
 			$order['custname'] = $input->post->text('cust-name');
 			$order['custpo'] = $input->post->text("custpo");
@@ -268,11 +281,13 @@
 				$order['extension'] = $input->post->text("contact-extension");
 				$order['faxnumber'] = $input->post->text("contact-fax");
 			}
+
 			if ($paytype == 'cc') {
 				$ccno = $input->post->text("ccno");
 				$xpd = $input->post->text("xpd");
 				$ccv = $input->post->text("ccv");
 			}
+
 			$session->sql = edit_orderhead(session_id(), $ordn, $order, false);
 			$session->sql .= '<br>'. edit_orderhead_credit(session_id(), $ordn, $paytype, $ccno, $xpd, $ccv);
 			$data = array('DBNAME' => $config->dbName, 'SALESHEAD' => false, 'ORDERNO' => $ordn);
@@ -286,32 +301,6 @@
 			$session->loc = $input->post->page;
 			break;
 		case 'add-nonstock-item':
-			$ordn = $input->post->text('ordn');
-			$qty = $input->post->text('qty');
-			insertorderline(session_id(), $ordn, '0', false);
-			$orderdetail = getorderlinedetail(session_id(), $ordn, '0', false);
-			$orderdetail['orderno'] = $ordn;
-			$orderdetail['recno'] = '0';
-			$orderdetail['price'] = $input->post->text('price');
-			$orderdetail['qty'] = $qty;
-			$orderdetail['desc1'] = $input->post->text('desc1');
-			$orderdetail['desc2'] = $input->post->text('desc2');
-			$orderdetail['vendorid'] = $input->post->text('vendorID');
-			$orderdetail['shipfromid'] = $input->post->text('shipfromid');
-			$orderdetail['vendoritemid'] = $input->post->text('itemID');
-			$orderdetail['nsitemgroup'] = $input->post->text('itemgroup');
-			$orderdetail['ponbr'] = $input->post->text('ponbr');
-			$orderdetail['poref'] = $input->post->text('poref');
-			$orderdetail['uom'] = $input->post->text('uofm');
-			$orderdetail['spcord'] = 'S';
-			$session->sql = edit_orderline(session_id(), $ordn, $orderdetail, false);
-			$data = array('DBNAME' => $config->dbName, 'SALEDET' => false, 'ORDERNO' => $ordn, 'LINENO' => '0', 'ITEMID' => 'N', 'QTY' => $qty, 'CUSTID' => $custID);
-			if ($input->post->page) {
-				$session->loc = $input->post->text('page');
-			} else {
-				$session->loc = $config->pages->edit."order/?ordn=".$ordn;
-			}
-			$session->editdetail = true;
 			break;
 		case 'update-line':
 			$ordn = $input->post->text('ordn');
@@ -323,6 +312,7 @@
 			$orderdetail['rshipdate'] = $input->post->text('rqstdate');
 			$orderdetail['whse'] = $input->post->text('whse');
 			$orderdetail['linenbr'] = $input->post->text('linenbr');
+
 			$orderdetail['spcord'] = $input->post->text('specialorder');
 			$orderdetail['vendorid'] = $input->post->text('vendorID');
 			$orderdetail['shipfromid'] = $input->post->text('shipfromid');
@@ -331,15 +321,7 @@
 			$orderdetail['ponbr'] = $input->post->text('ponbr');
 			$orderdetail['poref'] = $input->post->text('poref');
 			$orderdetail['uom'] = $input->post->text('uofm');
-<<<<<<< HEAD
-=======
 
-			if ($orderdetail['spcord'] != 'N') {
-				$orderdetail['desc1'] = $input->post->text('desc1');
-				$orderdetail['desc2'] = $input->post->text('desc2');
-			}
-
->>>>>>> 0c80bf2... Update for nonstock items
 			$session->sql = edit_orderline(session_id(), $ordn, $orderdetail, false);
 			$data = array('DBNAME' => $config->dbName, 'SALEDET' => false, 'ORDERNO' => $ordn, 'LINENO' => $linenbr);
 			if ($input->post->page) {
@@ -357,7 +339,7 @@
 			$orderdetail['linenbr'] = $input->post->text('linenbr');
 			$session->sql = edit_orderline(session_id(), $ordn, $orderdetail, false);
 			$session->editdetail = true;
-			$data = array('DBNAME' => $config->dbName, 'SALEDET' => false, 'ORDERNO' => $ordn, 'LINENO' => $linenbr, 'QTY' => '0');
+			$data = array('DBNAME' => $config->dbName, 'SALEDET' => false, 'ORDERNO' => $ordn, 'LINENO' => $linenbr);
 			if ($input->post->page) {
 				$session->loc = $input->post->text('page');
 			} else {
@@ -379,6 +361,7 @@
 			$session->{'orders-updated'} = date('m/d/Y h:i A');
 			break;
 	}
+
 	writedplusfile($data, $filename);
 	header("location: /cgi-bin/" . $config->cgi . "?fname=" . $filename);
  	exit;
