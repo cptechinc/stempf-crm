@@ -19,7 +19,7 @@
 					break;
 				}
 			}
-			
+            
 			if ($i > sizeof($custshiptos['data'])) {
 				$i = 1;
 			}
@@ -40,6 +40,7 @@
 		$config->scripts->append($config->urls->templates.'scripts/ci/cust-info.js');
         $config->scripts->append($config->urls->templates.'scripts/libs/raphael.js');
         $config->scripts->append($config->urls->templates.'scripts/libs/morris.js');
+
     } else {
 		$toolbar = false;
 	}
