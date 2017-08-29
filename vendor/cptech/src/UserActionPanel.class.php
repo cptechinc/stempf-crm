@@ -156,6 +156,11 @@
             return str_replace($this->getactiontypepage(), '{replace}', $addlink);
         }
 
+        function getaddtasktypelink() {
+            $addlink = $this->getaddactionlink();
+            return str_replace($this->getactiontypepage(), 'tasks', $addlink);
+        }
+
 		function getpanelrefreshlink() {
 			$link = '';
 			switch ($this->type) {
