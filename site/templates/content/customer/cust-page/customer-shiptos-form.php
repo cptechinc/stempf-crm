@@ -14,7 +14,7 @@
             </select>
         </td>
 	</tr>
-    <?php $shipto = get_shipto_info($custID, $shipID, false); ?>
+    <?php $shipto = get_shiptoinfo($custID, $shipID, false); ?>
     <tr> <td class="control-label">Ship-To ID: </td> <td><?php echo $shipto['shiptoid']; ?></td> </tr>
 	<?php if ($shipID != '') : ?>
 		<tr> <td></td> <td><?php //$withshipto = true; include $config->paths->content."customer/shop-as-form.php"; ?></td> </tr>
