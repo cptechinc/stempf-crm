@@ -93,7 +93,7 @@
 
 
 	$config->cgi = "DPLUSO";
-	$config->COMPANY = '2';
+	$config->COMPANY = '1';
 	$config->companyfiles = "/var/www/html/data".$config->COMPANY."/";
 	$config->documentstorage = "/orderfiles/";
 	$config->documentstoragedirectory = "/var/www/html/orderfiles/";
