@@ -413,8 +413,8 @@ $(document).ready(function() {
 			$("<div class='tribute' style='height: 400px;'></div>").html(loadingdiv).appendTo(loadinto);
 				//wait(2000, function() {
 					$(loadinto).empty();
-					$(loadinto).loadin(resultsurl, function() { 
-						
+					$(loadinto).loadin(resultsurl, function() {
+
 					});
 			//	});
 			});
