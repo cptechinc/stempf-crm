@@ -93,8 +93,9 @@
 
 
 	$config->cgi = "DPLUSO";
-	$config->COMPANY = '1';
-	$config->companyfiles = "/var/www/html/data".$config->COMPANY."/";
+	$config->cptechcustomer = 'cptech';
+	$config->COMPANYNBR = '3';
+	$config->companyfiles = "/var/www/html/data".$config->COMPANYNBR."/";
 	$config->documentstorage = "/orderfiles/";
 	$config->documentstoragedirectory = "/var/www/html/orderfiles/";
 	$config->jsonfilepath = "/var/www/html/files/json/";
