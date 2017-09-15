@@ -9,7 +9,7 @@
 	<br>
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane active" id="task">
-			<form action="<?php echo $config->pages->actions."tasks/add/"; ?>"  method="POST" id="new-action-form" data-refresh="#action-panel" data-modal="#ajax-modal">
+			<form action="<?php echo $config->pages->actions."tasks/add/"; ?>"  method="POST" id="new-action-form" data-refresh="#actions-panel" data-modal="#ajax-modal">
 				<input type="hidden" name="action" value="reschedule-task">
 				<input type="hidden" name="custlink" value="<?= $originaltask->customerlink; ?>">
 				<input type="hidden" name="shiptolink" value="<?= $originaltask->shiptolink; ?>">
@@ -77,8 +77,3 @@
 		</div>
 	</div>
 </div>
-<script>
-	$(function() {
-		CKEDITOR.replace('note', { height: 400});
-	})
-</script>

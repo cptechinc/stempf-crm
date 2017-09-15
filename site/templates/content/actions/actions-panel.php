@@ -5,7 +5,8 @@
 	$ajax->insertafter = $actionpanel->getinsertafter();
 
 	$totalcount = $actionpanel->count;
-
+	$salespersonjson = json_decode(file_get_contents($config->companyfiles."json/salespersontbl.json"), true);
+	$salespersoncodes = array_keys($salespersonjson['data']);
 ?>
 
 <div class="panel panel-primary not-round" id="<?= $actionpanel->panelid; ?>">
@@ -15,7 +16,7 @@
         </a>
 
 		<?php if ($actionpanel->needsaddactionlink()) : ?>
-			<a href="<?= $actionpanel->getaddtasktypelink(); ?>" class="btn btn-info btn-xs load-into-modal pull-right hidden-print" data-modal="<?= $actionpanel->modal; ?>" role="button" title="Add Action">
+			<a href="<?= $actionpanel->getaddactiontypelink(); ?>" class="btn btn-info btn-xs add-action pull-right hidden-print" data-modal="<?= $actionpanel->modal; ?>" role="button" title="Add Action">
 	            <i class="material-icons md-18">&#xE146;</i>
 	        </a>
 		<?php endif; ?>
@@ -41,6 +42,20 @@
 								<?php endif; ?>
                             <?php endforeach; ?>
                         </select>
+					</div>
+					<div class="col-xs-4">
+						<?php if (!$user->hasrestrictions) : ?>
+							<label>Change User</label>
+							<select class="form-control input-sm change-actions-user" data-link="<?= $actionpanel->getpanelrefreshlink(); ?>" <?= $ajax->data; ?>>
+								<?php foreach ($salespersoncodes as $salespersoncode) : ?>
+									<?php if ($salespersonjson['data'][$salespersoncode]['splogin'] == $assigneduserID) : ?>
+										<option value="<?= $salespersonjson['data'][$salespersoncode]['splogin']; ?>" selected><?= $salespersoncode.' - '.$salespersonjson['data'][$salespersoncode]['spname']; ?></option>
+									<?php else : ?>
+										<option value="<?= $salespersonjson['data'][$salespersoncode]['splogin']; ?>"><?= $salespersoncode.' - '.$salespersonjson['data'][$salespersoncode]['spname']; ?></option>
+									<?php endif; ?>
+                                <?php endforeach; ?>
+							</select>
+						<?php endif; ?>
 					</div>
 				</div>
             </div>

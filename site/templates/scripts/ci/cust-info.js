@@ -229,7 +229,6 @@ function quotes() {
 		$(loadinto).loadin(href, function() {
 			hideajaxloading();
 			$(modal).find('.modal-body').addClass('modal-results');
-
 			$(modal).resizemodal('xl').modal();
 		});
 	});

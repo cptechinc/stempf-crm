@@ -6,7 +6,6 @@
 <?php if (file_exists($shiptofile)) : ?>
     <?php $shiptojson = json_decode(file_get_contents($shiptofile), true);  ?>
     <?php if (!$shiptojson) { $shiptojson = array('error' => true, 'errormsg' => 'The customer Ship-tos Inquiry JSON contains errors');} ?>
-    
     <?php if ($shiptojson['error']) : ?>
         <div class="alert alert-warning" role="alert"><?php echo $shiptojson['errormsg']; ?></div>
     <?php else : ?>
@@ -46,6 +45,7 @@
 										<?php echo $shipto[$column]; ?>
 									</td>
 								<?php endif; ?>
+
 							<?php endforeach; ?>
 						</tr>
 					<?php endforeach; ?>

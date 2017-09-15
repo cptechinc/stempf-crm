@@ -19,13 +19,13 @@
 								<?php if ($shiptojson['columns']['top'][$column]['heading'] == '' && $shiptojson['data']['top'][$column] == '') : ?>
 								<?php else : ?>
 									<tr>
-										<td> <?= $shiptojson['columns']['top'][$column]['heading']; ?></td> 
-										<td> 
-											<?php 
+										<td> <?= $shiptojson['columns']['top'][$column]['heading']; ?></td>
+										<td>
+											<?php
 												if ($column == 'customerid') {
-													include $config->paths->content."cust-information/forms/cust-page-form.php"; 
+													include $config->paths->content."cust-information/forms/cust-page-form.php";
 												} else {
-													echo $shiptojson['data']['top'][$column]; 
+													echo $shiptojson['data']['top'][$column];
 												}
 											?>
 										</td>
@@ -87,10 +87,10 @@
 								<?php foreach ($rows as $row) : ?>
 									<tr>
 										<?php foreach ($columns as $column) : ?>
-											<td class="<?= $config->textjustify[$shiptojson['columns']['right'][$section][$column]['datajustify']]; ?>"> 
+											<td class="<?= $config->textjustify[$shiptojson['columns']['right'][$section][$column]['datajustify']]; ?>">
 												<?php echo $shiptojson['data']['right'][$section][$row][$column]; ?>
 											</td>
-										<?php endforeach; ?>	
+										<?php endforeach; ?>
 									</tr>
 								<?php endforeach; ?>
 							<?php endforeach; ?>

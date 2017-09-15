@@ -20,11 +20,7 @@
 		}
 	}
 
-	if (!empty($notelinks['customerlink'])) {
-		$notelinks['assignedto'] = get_customersalesperson($notelinks['customerlink'], $notelinks['shiptolink'], false);
-	} else {
-		$notelinks['assignedto'] = $user->loginid;
-	}
+	$notelinks['assignedto'] = $user->loginid;
 	$note = UserAction::blankuseraction($notelinks);
 
     $message = "Writing Note for {replace} ";

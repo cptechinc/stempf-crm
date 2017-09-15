@@ -33,7 +33,6 @@
 						</tr>
 					</table>
 				<?php endif; ?>
-				
 			</div>
 		</div>
 		<div class="col-md-3 col-sm-3 hidden-print">

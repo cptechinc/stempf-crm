@@ -7,9 +7,8 @@
             	<option value=" " <?php if ($shipID == '') { echo 'selected'; } ?>>Company Totals</option>
                	<?php $shiptos = get_customershiptos($custID, $user->loginid, $user->hascontactrestrictions, false); ?>
                 <?php foreach ($shiptos as $shipto) : ?>
-				<?php $address = $shipto['addr1'] . ' ' .$shipto['addr2']; $whole_address = $address.', '.$shipto['ccity'].', '.$shipto['cst']; ?>
-				<?php $show = $shipto['name'].' - '.$shipto['ccity'].', '.$shipto['cst']; ?>
-            		<option value="<?= $shipto['shiptoid']; ?>" <?php if ($shipto['shiptoid'] == $shipID) { echo 'selected'; } ?>><?= $show; ?> </option>
+					<?php $address = $shipto['addr1'] . ' ' .$shipto['addr2']; $whole_address = $address.', '.$shipto['ccity'].', '.$shipto['cst']; ?>
+            		<option value="<?php echo $shipto['shiptoid']; ?>" <?php if ($shipto['shiptoid'] == $shipID) { echo 'selected'; } ?>><?php echo $whole_address; ?> </option>
             	<?php endforeach; ?>
             </select>
         </td>
@@ -44,5 +43,4 @@
 	<tr>
 	  <td class="control-label">Times Sold</td> <td class="text-right"><?php echo $shipto['timesold']; ?></td>
 	</tr>
-
 </table>

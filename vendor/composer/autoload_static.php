@@ -43,12 +43,17 @@ class ComposerStaticInit6a3e4546e8a76333b85329c4e1966366
         ),
     );
 
+    public static $classMap = array (
+        'SimpleMail' => __DIR__ . '/..' . '/eoghanobrien/php-simple-mail/class.simple_mail.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit6a3e4546e8a76333b85329c4e1966366::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit6a3e4546e8a76333b85329c4e1966366::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit6a3e4546e8a76333b85329c4e1966366::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit6a3e4546e8a76333b85329c4e1966366::$classMap;
 
         }, null, ClassLoader::class);
     }

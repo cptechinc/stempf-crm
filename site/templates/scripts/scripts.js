@@ -411,11 +411,9 @@ $(document).ready(function() {
 			$(loadinto).empty();
 			var loadingdiv = "<div class='loading-item-results'>"+darkloadingwheel+"</div>";
 			$(loadingdiv).appendTo(loadinto);
-
 			$(formid).postformsync({formdata: false, jsoncallback: false}, function() { //{formdata: data/false, jsoncallback: true/false}
-
 				$(loadinto).loadin(resultsurl, function() {
-
+					
 				});
 			});
 		});
@@ -506,6 +504,18 @@ $(document).ready(function() {
 			var loadinto = $(this).data('loadinto');
 			var focuson = $(this).data('focus');
 			$(loadinto).loadin(href, function() { });
+		});
+
+		$("body").on("change", "#actions-panel .change-actions-user, #actions-modal-panel .change-actions-user", function() {
+			var select = $(this);
+			var userID = select.val();
+			var href = URI(select.data('link')).addQuery('assignedto', userID).toString();
+			var loadinto = $(this).data('loadinto');
+			var focuson = $(this).data('focus');
+			showajaxloading();
+			$(loadinto).loadin(href, function() {
+				hideajaxloading();
+			});
 		});
 
 		$("body").on("change", "#view-action-task-status", function(e) {
@@ -663,7 +673,7 @@ $(document).ready(function() {
 							wait(500, function() {
 								$(elementreload + " .actions-refresh").click();
 								$(modal).modal('hide');
-								/* swal({
+							 	swal({
 									title: "Your "+json.response.actiontype+" was created!",
 									text: "Would you like to create an action for this "+json.response.actiontype+"?",
 									type: "success",
@@ -676,7 +686,7 @@ $(document).ready(function() {
 									$('#actions-panel .add-action').attr('href', href).click();
 									href = URI(href).removeQuery('actionID').toString();
 									$('#actions-panel .add-action').attr('href', href);
-								}).catch(swal.noop); */
+								}).catch(swal.noop);
 							});
 						}
 					});

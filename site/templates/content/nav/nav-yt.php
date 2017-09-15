@@ -26,6 +26,7 @@
             <a href="#" class="navbar-brand open-site-search hidden-sm hidden-md hidden-lg pull-right"><i class="material-icons">&#xE8B6;</i></a>
 		</div>
 
+
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<?php foreach($homepage->and($homepage->children) as $item) : ?>

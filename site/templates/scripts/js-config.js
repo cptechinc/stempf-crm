@@ -1,4 +1,4 @@
-var sitedirectory = '';
+var sitedirectory = 'dpluso';
 var sitepath = '/';
 if (sitedirectory.length > 0) {
     sitepath = "/" + sitedirectory + "/";

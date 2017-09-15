@@ -93,8 +93,8 @@
 
 
 	$config->cgi = "DPLUSO";
-	$config->cptechcustomer = 'cptech';
-	$config->COMPANYNBR = '3';
+	$config->cptechcustomer = 'stempf';
+	$config->COMPANYNBR = '1';
 	$config->companyfiles = "/var/www/html/data".$config->COMPANYNBR."/";
 	$config->documentstorage = "/orderfiles/";
 	$config->documentstoragedirectory = "/var/www/html/orderfiles/";

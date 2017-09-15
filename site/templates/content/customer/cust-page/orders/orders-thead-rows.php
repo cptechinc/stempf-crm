@@ -6,6 +6,7 @@
             Order #<?= $orderno_sym; ?>
         </a>
     </th>
+
     <th>
         <?php $ajax->url->query->set("orderby", 'custpo-'.get_sorting_rule($orderby, $sortrule, "custpo")); ?>
         <a href="<?= $ajax->url; ?>" class="load-link" <?= $ajax->data; ?>>
@@ -19,18 +20,22 @@
             Order Totals <?= $total_sym; ?>
         </a>
     </th>
+
     <th>
         <?php $ajax->url->query->set("orderby", 'orderdate-'.get_sorting_rule($orderby, $sortrule, "orderdate")); ?>
         <a href="<?= $ajax->url; ?>" class="load-link" <?= $ajax->data; ?>>
             Order Date: <?= $orderdate_sym; ?>
         </a>
     </th>
+
     <th class="text-center">
         <?php $ajax->url->query->set("orderby", 'status-'.get_sorting_rule($orderby, $sortrule, "status")); ?>
         <a href="<?= $ajax->url; ?>" class="load-link" <?= $ajax->data; ?>>
             Status:<?= $status_sym; ?>
         </a>
     </th>
+
+
     <th colspan="2">
         <?php $ajax->url->query->remove('orderby'); ?>
         <a tabindex="0" <?= $legendiconcontent; ?> data-content="<?= $legendcontent; ?>">Icon Definitions</a>

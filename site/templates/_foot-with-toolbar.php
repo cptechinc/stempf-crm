@@ -35,4 +35,3 @@
         <?php include $config->paths->content."common/phpjs/add-to-cart-msg.php"; ?>
     </body>
 </html>
-

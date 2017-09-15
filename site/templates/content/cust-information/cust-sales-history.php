@@ -4,11 +4,9 @@
 	//$historyfile = $config->jsonfilepath."cishist-cisaleshist.json";
 	$shipID = $input->get->text('shipID');
 	$pageajax = 'N';
-
 	if ($config->ajax) {
 		$pageajax = 'Y';
 	}
-
 	$shownotes = false;
 	$startdate = $input->get->text('startdate');
 	$shownoteslink = $config->pages->ajax.'load/ci/ci-sales-history/?custID='.urlencode($custID).'&shipID'.urlencode($shipID).'&startdate='.urlencode($startdate);
@@ -137,6 +135,7 @@
 	if ($config->ajax) {
 		echo '<p>' . makeprintlink($config->filename, 'View Printable Version') . '</p>';
 	}
+
 ?>
 <?php if (file_exists($historyfile)) : ?>
     <?php $historyjson = json_decode(convertfiletojson($historyfile), true);  ?>
