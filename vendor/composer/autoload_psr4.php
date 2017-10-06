@@ -8,4 +8,10 @@ $baseDir = dirname($vendorDir);
 return array(
     'atk4\\dsql\\' => array($vendorDir . '/atk4/dsql/src'),
     'atk4\\core\\' => array($vendorDir . '/atk4/core/src'),
+    'Test\\' => array($vendorDir . '/interfax/interfax/tests'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
+    'Interfax\\' => array($vendorDir . '/interfax/interfax/src/Interfax'),
+    'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
+    'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
+    'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
 );

@@ -7,6 +7,9 @@ namespace Composer\Autoload;
 class ComposerStaticInit6a3e4546e8a76333b85329c4e1966366
 {
     public static $files = array (
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '9e18ce4281630de2b98d43ef0289b581' => __DIR__ . '/../..' . '/wire/core/ProcessWire.php',
     );
 
@@ -15,6 +18,24 @@ class ComposerStaticInit6a3e4546e8a76333b85329c4e1966366
         array (
             'atk4\\dsql\\' => 10,
             'atk4\\core\\' => 10,
+        ),
+        'T' => 
+        array (
+            'Test\\' => 5,
+        ),
+        'P' => 
+        array (
+            'Psr\\Http\\Message\\' => 17,
+        ),
+        'I' => 
+        array (
+            'Interfax\\' => 9,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
         ),
     );
 
@@ -26,6 +47,30 @@ class ComposerStaticInit6a3e4546e8a76333b85329c4e1966366
         'atk4\\core\\' => 
         array (
             0 => __DIR__ . '/..' . '/atk4/core/src',
+        ),
+        'Test\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/interfax/interfax/tests',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Interfax\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/interfax/interfax/src/Interfax',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
     );
 
