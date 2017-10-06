@@ -1,46 +1,32 @@
 <?php
  //$query = new atk4\dsql\Query();
- $pdf = 'SOPICK-0060218100,000.pdf';
- use Interfax\Client;
- 
-$interfax = new Client(['username' => 'cptechno', 'password' => '8628eag1e']);
+?>
+<?php include('./_head.php'); ?>
+
+<div class="jumbotron pagetitle">
+	<div class="container">
+		<h1><?php echo $page->get('pagetitle|headline|title') ; ?></h1>
+	</div>
+</div>
 
 
- try {
-	 $fax = $interfax->deliver([
-	   // a valid fax number
-	   'faxNumber' => '+19526532860',
-	   // a path to an InterFAX
-	   // compatible file
-	   'file' => $config->documentstoragedirectory.$pdf,
-	   'reference' => 'SO PICK 0060218100',
-	   'replyAddress' => 'paul@cptechinc.com'
-	 ]);
-	 /*
-	 // wait for the fax to send
-// successfully
-while(true) {
-  // reload the fax data
-  $fax = $fax->refresh();
-  // sleep if pending
-  if ($fax->status < 0) {
-    sleep(10);
-  } else {
-    if ($fax->status == 0) {
-      print "Sent!";
-    } else {
-      print "Error: ".$fax->status;
-    }
-    break;
-  }
-}
-*/
+<div class="container page fuelux">
 
- } catch (Interfax\Exception\RequestException $e) {
-     echo $e->getMessage();
-     // contains text detail that is available
-     echo $e->getStatusCode();
-     // the http status code that was received
-     throw $e->getWrappedException();
-     // The underlying Guzzle exception that was caught by the Interfax Client.
- }
+	<?php echo $session->sql; ?><br>
+	<?php echo  get_next_note_recno(session_id(), 'lvcl7k73d9cnf6kq83gokq2075', '1', 'CART'); ?>
+	<br>
+	<?php
+		echo $page->httpUrl;
+	?>
+	<br>
+	<?= $session->linecount; ?>
+
+
+</div>
+
+
+
+
+
+
+<?php include('./_foot.php'); // include footer markup ?>
