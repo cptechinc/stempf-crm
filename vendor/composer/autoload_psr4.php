@@ -6,6 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'atk4\\dsql\\' => array($vendorDir . '/atk4/dsql/src'),
-    'atk4\\core\\' => array($vendorDir . '/atk4/core/src'),
 );

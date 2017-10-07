@@ -4,29 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6a3e4546e8a76333b85329c4e1966366
+class ComposerStaticInitad2e4a7b25936d916138f781d78b7e4c
 {
     public static $files = array (
         '9e18ce4281630de2b98d43ef0289b581' => __DIR__ . '/../..' . '/wire/core/ProcessWire.php',
-    );
-
-    public static $prefixLengthsPsr4 = array (
-        'a' => 
-        array (
-            'atk4\\dsql\\' => 10,
-            'atk4\\core\\' => 10,
-        ),
-    );
-
-    public static $prefixDirsPsr4 = array (
-        'atk4\\dsql\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/atk4/dsql/src',
-        ),
-        'atk4\\core\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/atk4/core/src',
-        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -44,16 +25,24 @@ class ComposerStaticInit6a3e4546e8a76333b85329c4e1966366
     );
 
     public static $classMap = array (
+        'Contact' => __DIR__ . '/..' . '/cptechinc/dpluso-processwire-classes/src/Contact.class.php',
+        'Contento' => __DIR__ . '/..' . '/cptechinc/dpluso-processwire-classes/src/Contento.class.php',
+        'DplusDateTime' => __DIR__ . '/..' . '/cptechinc/dpluso-processwire-classes/src/DplusDateTime.class.php',
+        'Paginator' => __DIR__ . '/..' . '/cptechinc/dpluso-processwire-classes/src/Paginator.class.php',
+        'SalesOrder' => __DIR__ . '/..' . '/cptechinc/dpluso-processwire-classes/src/SalesOrder.class.php',
+        'SalesOrderPanel' => __DIR__ . '/..' . '/cptechinc/dpluso-processwire-classes/src/SalesOrderPanel.class.php',
         'SimpleMail' => __DIR__ . '/..' . '/eoghanobrien/php-simple-mail/class.simple_mail.php',
+        'Table' => __DIR__ . '/..' . '/cptechinc/dpluso-processwire-classes/src/Table.class.php',
+        'TablePageSorter' => __DIR__ . '/..' . '/cptechinc/dpluso-processwire-classes/src/TablePageSorter.class.php',
+        'UserAction' => __DIR__ . '/..' . '/cptechinc/dpluso-processwire-classes/src/UserAction.class.php',
+        'UserActionPanel' => __DIR__ . '/..' . '/cptechinc/dpluso-processwire-classes/src/UserActionPanel.class.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6a3e4546e8a76333b85329c4e1966366::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6a3e4546e8a76333b85329c4e1966366::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit6a3e4546e8a76333b85329c4e1966366::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit6a3e4546e8a76333b85329c4e1966366::$classMap;
+            $loader->prefixesPsr0 = ComposerStaticInitad2e4a7b25936d916138f781d78b7e4c::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitad2e4a7b25936d916138f781d78b7e4c::$classMap;
 
         }, null, ClassLoader::class);
     }
