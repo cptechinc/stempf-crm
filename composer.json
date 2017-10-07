@@ -20,7 +20,7 @@
   "require": {
     "php": ">=5.3.8",
     "ext-gd": "*",
-    "cptechinc/dpluso-processwire-classes": "^1.0",
+    "cptechinc/dpluso-processwire-classes": ">=1.0",
     "eoghanobrien/php-simple-mail": "^1.7",
     "jwage/purl": "dev-cptechinc"
   },
